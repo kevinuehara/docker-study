@@ -1,0 +1,10 @@
+//without param using the default
+cd build_with_args
+docker image build -t ex-build-arg
+docker container run ex-build-arg bash -c 'echo $S3_BUCKET' //expected is "files", because we does not passing a param in build
+
+
+//with params
+cd build_with_args
+docker image build --build-arg S3_BUCKET=myapp -t ex-build-arg .
+docker container run ex-build-arg bash -c 'echo $S3_BUCKET' //expected is "my_app", because we are passing my_app as param in build

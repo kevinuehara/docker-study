@@ -1,0 +1,4 @@
+cd first-build
+docker image build -t ex-simple-build .
+
+"-t" flag represents the tag/name of this image

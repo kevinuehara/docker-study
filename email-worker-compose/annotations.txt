@@ -1,0 +1,9 @@
+// Utils Commands
+docker-compose exec db psql -U postgres -c '\l'
+docker-compose exec db psql -U postgres -f /scripts/check.sql
+
+// See logs
+docker-compose logs -f -t
+
+// scale worker with 3 instances
+docker-compose up -d --scale worker=3

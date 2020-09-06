@@ -1,0 +1,6 @@
+cd ex-volume/
+docker container run -p 8080:80 -v $(pwd)/html:/usr/share/nginx/html nginx
+
+- I'm creating a file index.html in dir html/index in my host
+- the -v flag is mapping the directory of nginx default page of container point to the my directory page 
+in my host

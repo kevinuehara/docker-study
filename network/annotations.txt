@@ -1,0 +1,18 @@
+docker network ls //listing networks (bridge, none, host)
+
+docker container run -d --net none debian //creating a container using the none network, therefore these container does not has internet access, communication with another containers
+
+// the bridge network is default when we create some container
+
+docker container run -d --name container1 alpine sleep 1000
+docker container run -d --name container2 alpine sleep 1000
+docker container exec -t container1 ping 172.17.0.3 // pinging of IP of container2 
+
+//EXAMPLES
+docker network create --driver bridge rede_nova // we can create an network
+docker container run -d --name container3 --net rede_nova alpine sleep 1000
+
+docker network connect bridge container3 // but we can add the bridge of another access to these container
+docker network disconnect bridge container3 // here we are disconnecting of bridge network
+
+docker container exec -it container3 ifconfig // will appears two network interfaces (bridge and rede_nova)
